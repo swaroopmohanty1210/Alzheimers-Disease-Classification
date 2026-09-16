@@ -1,21 +1,28 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import pickle
 
-# -----------------------------------
+# ----------------------------------
 # Page Configuration
-# -----------------------------------
+# ----------------------------------
 st.set_page_config(
     page_title="Alzheimer's Disease Prediction",
     page_icon="🧠",
     layout="wide"
 )
 
+# Load the model and scaler using pickle
+with open("alzheimers_gb_model.pkl", "rb") as f:
+    model = pickle.load(f)
+
+with open("scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
 # -----------------------------------
 # Load Model
 # -----------------------------------
-model = joblib.load("alzheimers_gb_model.pkl")
-scaler = joblib.load("scaler.pkl")
+
+
 
 # -----------------------------------
 # Helper Function
@@ -320,13 +327,4 @@ if st.button("🔍 Predict Alzheimer's Risk"):
     )
 
 
-import pickle
-import streamlit as st
 
-# Load the model and scaler using pickle
-with open("alzheimers_gb_model.pkl", "rb") as f:
-    model = pickle.load(f)
-
-with open("scaler.pkl", "rb") as f:
-    scaler = pickle.load(f)
-    
