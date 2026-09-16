@@ -318,4 +318,15 @@ if st.button("🔍 Predict Alzheimer's Risk"):
         label="Risk Probability",
         value=f"{probability:.2%}"
     )
+
+
+import pickle
+import streamlit as st
+
+# Load the model and scaler using pickle
+with open("alzheimers_gb_model.pkl", "rb") as f:
+    model = pickle.load(f)
+
+with open("scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
     
